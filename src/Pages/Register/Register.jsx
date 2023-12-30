@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom";
 import logo from "../../assets/login-animation.gif"
+import { useContext } from "react";
+import { Authcontext } from "../../Components/Authprovider/AuthProvider";
 
 const Register = () => {
+
+const { crateUser} = useContext(Authcontext)
 
   const handleRegister = e =>{
     e.preventDefault();
@@ -10,6 +14,19 @@ const Register = () => {
     const email = from.email.value;
     const password = from.password.value;
     console.log(name,email,password);
+
+     crateUser( email, password)
+     .then(result =>{
+      const user= result.user
+      console.log(user);
+     })
+    .catch( error=>console.log(error));
+
+
+
+
+
+
     }
 
 

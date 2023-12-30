@@ -1,19 +1,48 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa";
 import logo from "../../assets/login-animation.gif"
+import { useContext } from "react";
+import { Authcontext } from "../../Components/Authprovider/AuthProvider";
 
 
 const Login = () => {
 
+ const { sigIn,  googleSingIn}=useContext(Authcontext);
+ 
+const navigate = useNavigate()
     const handelLogin = e =>{
         e.preventDefault();
         const from = e.target;
         const email = from.email.value;
         const password = from.password.value;
         console.log(email,password);
+
+        sigIn(email, password)
+        .then(result=>{
+          const user = result.user
+          console.log( user);
+        })
+        .catch( error => console.log(error));
+
+
         }
 
-        
+        const handelgoogle = ()=>{
+          googleSingIn()
+          .then((res)=>{
+            console.log(res);
+          })
+          .catch((error)=>{
+            console.log(error);
+          });
+          navigate("/")
+          
+        }
+
+
+
+
+
 
     return (
         <div>
@@ -49,7 +78,9 @@ const Login = () => {
     <h1 className="text-center ">
         Don’t have account? <Link className="underline font-bold" to={"/register"}>Register</Link>
   </h1>
-  <div  className=" flex text-center rounded-lg w-36 bg-blue-400  gap-1 mt-2 mx-auto  items-center border">
+  <div 
+  onClick={handelgoogle}
+   className=" flex text-center rounded-lg w-36 bg-blue-400  gap-1 mt-2 mx-auto  items-center border">
      <p className="uppercase text-xl font-bold p-2 px-2 "> google </p> <button  className=" text-2xl "> <FaGoogle/> </button>
       </div>
   </div>

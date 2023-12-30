@@ -3,14 +3,14 @@ import { initializeApp } from "firebase/app";
 // TODO: Add SDKs for Firebase products that you want to use
 
 const firebaseConfig = {
-apiKey: "AIzaSyCU_DA-MU93kAejKtDFsYG3iBZaWMZWtYY",
-authDomain: "e-commerce-site-61237.firebaseapp.com",
-projectId: "e-commerce-site-61237",
-storageBucket: "e-commerce-site-61237.appspot.com",
-messagingSenderId: "1025315093999",
-appId: "1:1025315093999:web:9bf448210f3ac4a5904a1a"
+apiKey: import.meta.env.VITE_apiKey,
+authDomain: import.meta.env.VITE_authDomain,
+projectId: import.meta.env.VITE_projectId,
+storageBucket: import.meta.env.VITE_storageBucket,
+messagingSenderId: import.meta.env.VITE_messagingSenderId,
+appId: import.meta.env.VITE_appId,
 };
 
 
 const app = initializeApp(firebaseConfig);
-export default app()
+export default app;

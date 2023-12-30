@@ -1,8 +1,24 @@
 import { Link, NavLink } from "react-router-dom";
 // import { FaUser } from "react-icons/fa";
 import { FaShoppingCart } from "react-icons/fa";
+import { useContext } from "react";
+import { Authcontext } from "../Authprovider/AuthProvider";
+
 
 const Header = () => {
+
+  const { user ,logOut} = useContext(Authcontext);
+
+
+  const handelLogOut =()=>{
+    logOut()
+    .then(()=>{ })
+    .catch( error => console.log(error));
+  }
+
+
+
+
     return (
         <div className="navbar px-7  bg-base-300">
         <div className="navbar-start">
@@ -79,12 +95,30 @@ const Header = () => {
 <div className="dropdown dropdown-end">
       <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
         <div className="w-10 rounded-full">
-          <img alt="Tailwind CSS Navbar component" src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+          {/* <img alt="Tailwind CSS Navbar component" src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" /> */}
+          {
+            
+            user &&
+            <img src={user.photoURL} alt="" />  
+              
+          
+          }
+          <img src="https://i.ibb.co/p3vCR2s/istockphoto-1300845620-612x612.jpg" alt="" />
         </div>
       </div>
       <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
         <li><a>New Product</a></li>
-        <li><a> <Link to={"/login"}>LogIn</Link> </a></li>
+        {/* <li><a> <Link to={"/login"}>LogIn</Link> </a></li> */}
+        <li> <a >
+        {
+          user ? <> <button className=" bg-blue-200 border py-2 px-2 p-2 font-bold rounded-md " onClick={handelLogOut} >  LOGUT </button> </> :
+          
+          <><> <Link to={"/login"}>
+          <button className="font-bold text-xl  "> LOGIN </button>
+        </Link></></>
+        }
+          
+          </a></li>
       </ul>
     </div>
         </div>
