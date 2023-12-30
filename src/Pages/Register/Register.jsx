@@ -2,6 +2,17 @@ import { Link } from "react-router-dom";
 import logo from "../../assets/login-animation.gif"
 
 const Register = () => {
+
+  const handleRegister = e =>{
+    e.preventDefault();
+    const from = e.target;
+    const name = from.name.value;
+    const email = from.email.value;
+    const password = from.password.value;
+    console.log(name,email,password);
+    }
+
+
     return (
         <div>
         <div className="hero min-h-screen bg-base-200">
@@ -10,7 +21,7 @@ const Register = () => {
       <img src="https://i.ibb.co/CvgyLPj/Best-Passws-1408198405.webp" alt="" className="w-[80%] h-[50%] " />
   </div>
   <div className="card shrink-0  w-[44%]  ">
-    <form>
+    <form onSubmit={handleRegister}>
       {/* <h1 className="text-2xl font-bold">Interested to join?</h1> */}
       <img src={logo} alt="logo" className="w-[80px] rounded-full bg-slate-600 items-center text-center  mx-auto   " />
 
