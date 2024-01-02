@@ -17,7 +17,7 @@ const Header = () => {
   console.log(import.meta.env.VITE_ADMIN);
 
   return (
-    <div className="navbar px-7  bg-base-300">
+    <div className="navbar lg:px-7 px-3 bg-base-300">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -50,7 +50,7 @@ const Header = () => {
           </ul>
         </div>
         {/* <img src={logo} alt="" className=" w-16 opacity- " /> */}
-        <h1 className="text-3xl font-bold font-serif uppercase"> VivaBuy</h1>
+        <h1 className="lg:text-3xl font-bold font-serif uppercase"> VivaBuy</h1>
       </div>
       <div className="navbar-center hidden lg:flex">
         {/* desktop */}
@@ -113,12 +113,12 @@ const Header = () => {
             role="button"
             className="btn btn-ghost btn-circle avatar"
           >
-            <div className="w-10 rounded-full">
+            <div className="lg:w-10 rounded-full">
               {/* <img alt="Tailwind CSS Navbar component" src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" /> */}
               {user && <img src={user.photoURL} alt="" />}
               <img
                 src="https://i.ibb.co/p3vCR2s/istockphoto-1300845620-612x612.jpg"
-                alt=""
+                alt="" className=""
               />
             </div>
           </div>
@@ -129,9 +129,6 @@ const Header = () => {
               {
                 user?.email === import.meta.env.VITE_ADMIN &&  <li><a> <Link  to={"/newProduct"}>New Product</Link></a></li>
               }
-            
-            {/* <li><a> <Link  to={"/newProduct"}>New Product</Link></a></li> */}
-            {/* <li><a> <Link to={"/login"}>LogIn</Link> </a></li> */}
             <li>
 
               <a>

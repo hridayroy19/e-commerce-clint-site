@@ -6,8 +6,10 @@ import { Toaster } from "react-hot-toast";
 const MainLeout = () => {
     return (
         <div>
-         <Header></Header>
-            <Outlet/>
+         <div className=""><Header></Header></div>
+           <div className="px-9">
+           <Outlet/>
+           </div>
             <Toaster />
         </div>
     );
