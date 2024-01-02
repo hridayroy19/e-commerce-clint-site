@@ -1,7 +1,9 @@
+import FrishVigitable from "./FrishVigitable";
 
 
 const Home = () => {
     return (
+        <>
         <div className="p-2 md:p-4">
         <div className="md:flex gap-4 py-2">
           <div className="md:w-1/2">
@@ -29,10 +31,16 @@ const Home = () => {
           </div>
   
           <div className="md:w-1/2 flex flex-wrap gap-5 p-4 justify-center">
-           <img src="https://c4.wallpaperflare.com/wallpaper/311/699/596/fruit-allsorts-pineapple-melon-wallpaper-preview.jpg" alt="img" className="w-full h-[80%] rounded opacity-85 " />
+           <img src="https://c4.wallpaperflare.com/wallpaper/311/699/596/fruit-allsorts-pineapple-melon-wallpaper-preview.jpg" alt="img" className="w-[90%] h-[80%] rounded opacity-85 " />
           </div>
         </div>
       </div>
+      {/* element */}
+     <div className="mt-5">
+ 
+     <FrishVigitable></FrishVigitable>
+     </div>
+      </>
     );
 };
 

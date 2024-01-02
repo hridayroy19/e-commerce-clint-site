@@ -6,7 +6,7 @@ import { Authcontext } from "../Authprovider/AuthProvider";
 
 const Header = () => {
   const { user, logOut } = useContext(Authcontext);
-  console.log(user?.email);
+  // console.log(user?.email);
 
   const handelLogOut = () => {
     logOut()
@@ -14,7 +14,7 @@ const Header = () => {
       .catch((error) => console.log(error));
   };
 
-  console.log(import.meta.env.VITE_ADMIN);
+  // console.log(import.meta.env.VITE_ADMIN);
 
   return (
     <div className="navbar lg:px-7 px-3 bg-base-300">
