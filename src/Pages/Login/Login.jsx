@@ -23,8 +23,8 @@ const navigate = useNavigate()
           console.log( user);
         })
         .catch( error => console.log(error));
-
-
+           
+        navigate("/")
         }
 
         const handelgoogle = ()=>{

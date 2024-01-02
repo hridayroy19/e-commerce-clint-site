@@ -1,3 +1,5 @@
+import Swal from "sweetalert2";
+
 const NewProduct = () => {
   const handelAddtasl = (event) => {
     event.preventDefault();
@@ -15,6 +17,34 @@ const NewProduct = () => {
       discription,
     };
     console.log(newproduct);
+    fetch("http://localhost:5000/products", {
+        method: "POST",
+        headers: {
+          "content-type":"application/json",
+        },
+        body: JSON.stringify(newproduct),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.insertedId) {
+            const Toast = Swal.mixin({
+              toast: true,
+              position: "top-end",
+              showConfirmButton: false,
+              timer: 3000,
+              timerProgressBar: true,
+              didOpen: (toast) => {
+                toast.addEventListener("mouseenter", Swal.stopTimer);
+                toast.addEventListener("mouseleave", Swal.resumeTimer);
+              },
+            });
+  
+            Toast.fire({
+              icon: "success",
+              title: "Add Task successfully",
+            });
+          }
+        });
   };
 
   return (
@@ -76,7 +106,7 @@ const NewProduct = () => {
               <label className="label">
                 <span className="label-text text-white">Catagory</span>
               </label>
-              <select
+              <select 
                 name="catagory"
                 className="select select-bordered select-warning w-full"
               >
