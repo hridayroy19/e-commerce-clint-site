@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
-import VagitableCard from "./VagitableCard";
+import { useEffect, useRef, useState } from "react";
+// import VagitableCard from "./VagitableCard";
+import { GrPrevious, GrNext } from "react-icons/gr";
 
 const FrishVigitable = () => {
   const [vegetableTasks, setVegetableTasks] = useState([]);
@@ -22,13 +23,45 @@ const FrishVigitable = () => {
       });
   }, []);
 
+  const slideProductRef = useRef();
+  const nextProduct = () => {
+    slideProductRef.current.scrollLeft += 200;
+  };
+  const preveProduct = () => {
+    slideProductRef.current.scrollLeft -= 200;
+  };
+
+
+
+
+
+
+
+
+
+
+
   return (
     <div>
       <h2 className="font-bold text-2xl text-slate-800 mb-4">
         Fresh Vegetables
       </h2>
+      <div className="ml-auto mb-2 mt-2 flex gap-4">
+            <button
+              onClick={preveProduct}
+              className="bg-slate-300 hover:bg-slate-400 text-lg  p-1 rounded"
+            >
+              <GrPrevious />
+            </button>
+            <button
+              onClick={nextProduct}
+              className="bg-slate-300  hover:bg-slate-400 text-lg p-1 rounded "
+            >
+              <GrNext />
+            </button>
+          </div>
 
-      <div className=" flex gap-8 overflow-scroll  ">
+      <div className=" flex gap-8 overflow-scroll scrollbar-none scroll-smooth transition-all " ref={slideProductRef}>
         {vegetableTasks.map((task) => (
           <div key={task._id} className=" w-full min-w-[200px] max-w-[200px] bg-white hover:shadow-lg drop-shadow-lg py-5 px-4 cursor-pointer flex flex-col" >
             <div className="h-28 flex flex-col justify-center items-center">
