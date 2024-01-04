@@ -1,4 +1,5 @@
 import FrishVigitable from "./FrishVigitable";
+import Yourproducts from "./Yourproducts";
 
 
 const Home = () => {
@@ -40,6 +41,9 @@ const Home = () => {
  
      <FrishVigitable></FrishVigitable>
      </div>
+     {/* <div className="mt-4">
+      <Yourproducts/>
+     </div> */}
       </>
     );
 };

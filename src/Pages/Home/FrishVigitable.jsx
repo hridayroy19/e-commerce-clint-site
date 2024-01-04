@@ -1,14 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 // import VagitableCard from "./VagitableCard";
 import { GrPrevious, GrNext } from "react-icons/gr";
+import Yourproducts from "./Yourproducts";
 
 const FrishVigitable = () => {
   const [vegetableTasks, setVegetableTasks] = useState([]);
-  // const [allTask, setAlltask] = useState([]);
-  // console.log(allTask);
-  // const vegetableProducts = allTask.filter((task) => task.catagory === 'vegetable');
-  // setVegetableTasks(vegetableProducts);
-  console.log(vegetableTasks);
+  const [catagoryList, setCatagoryList] = useState([]);
+  // console.log(vegetableTasks);
 
   useEffect(() => {
     const url = `http://localhost:5000/products`;
@@ -23,6 +21,18 @@ const FrishVigitable = () => {
       });
   }, []);
 
+  //  again data lode
+
+  fetch("http://localhost:5000/products")
+  .then(res=> res.json())
+  .then(data =>{
+  //  console.log(data);
+    setCatagoryList(data)
+  })
+  .catch(error=>console.log(error));
+
+
+
   const slideProductRef = useRef();
   const nextProduct = () => {
     slideProductRef.current.scrollLeft += 200;
@@ -32,17 +42,12 @@ const FrishVigitable = () => {
   };
 
 
-
-
-
-
-
-
-
+const catagoryLinstImem =[...new Set(catagoryList.map( catagory =>catagory.catagory))]
+console.log(catagoryLinstImem);
 
 
   return (
-    <div>
+    <div className=" mb-11">
       <h2 className="font-bold text-2xl text-slate-800 mb-4">
         Fresh Vegetables
       </h2>
@@ -82,11 +87,28 @@ const FrishVigitable = () => {
           </div>
         ))}
       </div>
+
+      <div  className="my-6">
+           <h2 className="font-bold text-2xl capitalize  text-slate-800 "> yours products</h2>
+               <div className="gap-4 flex justify-center overflow-scroll scrollbar-none   mt-7 text-2xl  rounded-full">
+                     {
+                      catagoryLinstImem[0] && catagoryLinstImem.map(el =>{
+                        return (
+                          <Yourproducts key={catagoryLinstImem._id} catagory={el}/>
+                        )
+                      })
+                     }
+
+               </div>
+        </div>
+
+
+
+
+
+
     </div>
   );
 };
 
 export default FrishVigitable;
-{
-  /* <VagitableCard key={task._id} props={task} ></VagitableCard> */
-}
