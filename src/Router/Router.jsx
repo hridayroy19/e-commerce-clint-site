@@ -6,6 +6,7 @@ import Contact from "../Pages/Contact/Contact";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
 import NewProduct from "../Components/NewProduct/NewProduct";
+import CardDitels from "../Pages/Home/CardDitels";
 
 
 
@@ -29,6 +30,12 @@ const Router = createBrowserRouter([
             {
                 path:"/newProduct",
                 element:<NewProduct/>
+            },
+            {
+                path:"/cardDitels/:id",
+                element:<CardDitels></CardDitels>,
+                loader: ({ params }) =>
+                fetch(`http://localhost:5000/products/${params.id}`),
             }
           
         ]

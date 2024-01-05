@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 // import VagitableCard from "./VagitableCard";
 import { GrPrevious, GrNext } from "react-icons/gr";
 import Yourproducts from "./Yourproducts";
+import { Link } from "react-router-dom";
 
 const FrishVigitable = () => {
   const [vegetableTasks, setVegetableTasks] = useState([]);
@@ -22,14 +23,16 @@ const FrishVigitable = () => {
   }, []);
 
   //  again data lode
-
+useEffect(()=>{
   fetch("http://localhost:5000/products")
-    .then((res) => res.json())
-    .then((data) => {
-      //  console.log(data);
-      setCatagoryList(data);
-    })
-    .catch((error) =>console.log(error));
+  .then((res) => res.json())
+  .then((data) => {
+    //  console.log(data);
+    setCatagoryList(data);
+  })
+  .catch((error) =>console.log(error));
+},[])
+  
 
   const slideProductRef = useRef();
   const nextProduct = () => {
@@ -94,6 +97,7 @@ const handelFileterProduct = ( catagory) =>{
             key={task._id}
             className=" w-full min-w-[200px] max-w-[200px] bg-white hover:shadow-lg drop-shadow-lg py-5 px-4 cursor-pointer flex flex-col"
           >
+            <Link to={`/cardDitels/${task._id}`}>
             <div className="h-28 flex flex-col justify-center items-center">
               <img src={task.photo} className="h-full" />
             </div>
@@ -105,6 +109,7 @@ const handelFileterProduct = ( catagory) =>{
               <span className="text-red-500">₹</span>
               <span>{task.price}</span>
             </p>
+            </Link>
 
             <button className="bg-yellow-500 py-1 mt-2 rounded hover:bg-yellow-600 w-full">
               Add Cart
@@ -131,6 +136,7 @@ const handelFileterProduct = ( catagory) =>{
       key={el._id}
       className=" w-full min-w-[200px] max-w-[200px] bg-white hover:shadow-lg drop-shadow-lg py-5 px-4 cursor-pointer flex flex-col"
     >
+      {/* <Link to={`/cardDitels/${id}`}> */}
       <div className="h-28 flex flex-col justify-center items-center">
         <img src={el.photo} className="h-full" />
       </div>
@@ -142,10 +148,15 @@ const handelFileterProduct = ( catagory) =>{
         <span className="text-red-500">₹</span>
         <span>{el.price}</span>
       </p>
+      {/* </Link> */}
 
-      <button className="bg-yellow-500 py-1 mt-2 rounded hover:bg-yellow-600 w-full">
+  
+<button className="bg-yellow-500 py-1 mt-2 rounded hover:bg-yellow-600 w-full">
         Add Cart
       </button>
+      {/* <button className="bg-yellow-500 py-1 mt-2 rounded hover:bg-yellow-600 w-full">
+        view ditels
+      </button> */}
     </div>)
   }
 </div>
