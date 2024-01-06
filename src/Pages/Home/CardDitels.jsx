@@ -1,4 +1,7 @@
 import { useLoaderData } from "react-router-dom";
+import { IoIosHeartEmpty } from "react-icons/io";
+import { IoShareSocialSharp } from "react-icons/io5";
+import FrishVigitable from "./FrishVigitable";
 
 const CardDitels = () => {
   const productDisplay = useLoaderData();
@@ -6,7 +9,7 @@ const CardDitels = () => {
   return (
     <>
       <div className="p-2 md:p-4 ">
-        <div className="w-full bg-slate-200 max-w-4xl border m-auto justify-center items-center md:text-center md:flex bg-white">
+        <div className="w-full  max-w-4xl border m-auto    md:flex bg-white">
           <div className="max-w-sm  overflow-hidden w-full p-5">
             <img
               src={productDisplay.photo}
@@ -14,16 +17,16 @@ const CardDitels = () => {
             />
           </div>
           <div className="flex flex-col ml-5 gap-1">
-            <h3 className="font-semibold text-slate-600  capitalize text-2xl md:text-4xl">
+            <h3 className="font-semibold text-slate-600 my-2 text-xl capitalize  md:text-4xl">
               {productDisplay.name}
             </h3>
 
             
-              <div className="flex text-xs items-center gap-3">
-                <div className="rating">
+              <div className="flex text-xs items-center mt-2 gap-3">
+                <div className="rating text-xl ">
                   <input
                     type="radio"
-                    name="rating-2"
+                    name="rating-3"
                     className="mask mask-star-2 bg-orange-400"
                   />
                   <input
@@ -49,10 +52,18 @@ const CardDitels = () => {
                   />
                 </div>
                 <div>
-                  <p>610 Ratings8 Answered Questions</p>
+                  <p className="text-[12px] mt-1 items-center">610 Ratings8 Answered Questions</p>
+                
                 </div>
+                
               </div>
-            
+             <div className="flex items-center gap-6  ">
+             <h1 className="mb-2">
+                  <span className=" font-bold text-red-500">Brand:</span> No BrandMore Audio from No Brand
+                  </h1>
+                  <a className="text-2xl text-red-500" href=""> <IoIosHeartEmpty /> </a> <span className="text-2xl text-red-500"><IoShareSocialSharp />
+</span>
+             </div>
             <p className=" text-slate-500  font-medium text-2xl">
               {productDisplay.category}
             </p>
@@ -63,15 +74,15 @@ const CardDitels = () => {
 
             <div>
               <p className="text-slate-600 font-medium">
-                Description :{productDisplay.discription}{" "}
+                <span className="font-bold ">Description :</span>{productDisplay.discription}
               </p>
               <p>{productDisplay.description}</p>
             </div>
-            <div className="flex md:justify-center  mb-3 mt-4 gap-4">
-              <button className="bg-yellow-500 py-1 mt-2 rounded hover:bg-yellow-600 min-w-[100px]">
+            <div className="flex  mb-3 mt-4 gap-4">
+              <button className="bg-blue-400 py-1 mt-2 rounded hover:bg-green-400 min-w-[100px]">
                 Buy
               </button>
-              <button className="bg-yellow-500 py-1 mt-2 rounded hover:bg-yellow-600 min-w-[100px]">
+              <button className="bg-yellow-500 py-1 mt-2 rounded hover:bg-red-500 min-w-[100px]">
                 Add Cart
               </button>
             </div>
@@ -80,6 +91,7 @@ const CardDitels = () => {
 
         {/* <AllProduct heading={"Related Product"}/> */}
       </div>
+      <FrishVigitable/>
     </>
   );
 };

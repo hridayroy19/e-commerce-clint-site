@@ -7,6 +7,7 @@ import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
 import NewProduct from "../Components/NewProduct/NewProduct";
 import CardDitels from "../Pages/Home/CardDitels";
+import AddProduct from "../Pages/AddCard/AddProduct";
 
 
 
@@ -30,6 +31,11 @@ const Router = createBrowserRouter([
             {
                 path:"/newProduct",
                 element:<NewProduct/>
+            },
+            {
+                path:"/addCard",
+                element:<AddProduct/>
+
             },
             {
                 path:"/cardDitels/:id",

@@ -50,7 +50,7 @@ const Header = () => {
           </ul>
         </div>
         {/* <img src={logo} alt="" className=" w-16 opacity- " /> */}
-        <h1 className="lg:text-3xl font-bold font-serif uppercase"> VivaBuy</h1>
+        <h1 className="lg:text-3xl font-bold font-serif text-orange-500 uppercase"> VivaBuy</h1>
       </div>
       <div className="navbar-center hidden lg:flex">
         {/* desktop */}
@@ -62,7 +62,7 @@ const Header = () => {
                 isPending
                   ? "pending"
                   : isActive
-                  ? "text-[#4441f0] underline text-[17px] font-semibold"
+                  ? "text-[#4441f0] underline  text-[17px] font-bold text-xl"
                   : ""
               }
             >
@@ -100,13 +100,15 @@ const Header = () => {
         </ul>
       </div>
       <div className="navbar-end flex gap-5  px-4">
+        <Link to={"/addCard"}>
+      
         <a className="relative text-[28px] ">
           <FaShoppingCart />
           <p className=" absolute -top-1 -right-1 text-white bg-red-600 items-start h-4 w-4 rounded-full p-0 text-sm text-center">
             0
           </p>
         </a>
-
+        </Link>
         <div className="dropdown dropdown-end">
           <div
             tabIndex={0}
