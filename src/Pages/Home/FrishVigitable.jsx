@@ -9,6 +9,11 @@ const FrishVigitable = () => {
   const [catagoryList, setCatagoryList] = useState([]);
   // console.log(vegetableTasks);
 
+
+ 
+
+
+
   useEffect(() => {
     const url = `http://localhost:5000/products`;
     fetch(url)
@@ -89,13 +94,13 @@ const handelFileterProduct = ( catagory) =>{
       </div>
 
       <div
-        className=" flex gap-8 overflow-scroll scrollbar-none scroll-smooth transition-all "
+        className=" flex group gap-8 overflow-scroll scrollbar-none scroll-smooth transition-all "
         ref={slideProductRef}
       >
         {vegetableTasks.map((task) => (
           <div
             key={task._id}
-            className=" w-full min-w-[200px] max-w-[200px] bg-white hover:shadow-lg drop-shadow-lg py-5 px-4 cursor-pointer flex flex-col"
+            className=" w-full min-w-[200px] group-hover:blur-sm hover:!blur-none group-hover:scale-[0.8] hover:!scale-100 duration-500  max-w-[200px] bg-white hover:shadow-lg drop-shadow-lg py-5 px-4 cursor-pointer flex flex-col"
           >
             <Link to={`/cardDitels/${task._id}`}>
             <div className="h-28 flex flex-col justify-center items-center">
@@ -110,8 +115,8 @@ const handelFileterProduct = ( catagory) =>{
               <span>{task.price}</span>
             </p>
             </Link>
-
-            <button className="bg-yellow-500 py-1 mt-2 rounded hover:bg-yellow-600 w-full">
+            <button
+            className="bg-yellow-500 py-1 mt-2 rounded hover:bg-yellow-600 w-full">
               Add Cart
             </button>
           </div>
